@@ -92,15 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 32),
-                child: Container(
-                  height: 84,
-                  decoration: BoxDecoration(color: AppColors.lightBackgroundGray, borderRadius: BorderRadius.circular(20)),
-                  alignment: Alignment.center,
-                  child: CustomText(text: "Today's Daily - 12:00 pm", fontWeight: FontWeight.bold, fontSize: 20, color: AppColors.darkGray),
-                ),
-              ),
+              Container(height: 84, decoration: BoxDecoration(color: AppColors.lightBackgroundGray, borderRadius: BorderRadius.circular(20)), alignment: Alignment.center, child: CustomText(text: "Today's Daily - 12:00 pm", fontWeight: FontWeight.bold, fontSize: 20, color: AppColors.darkGray)),
               const SizedBox(height: 15),
 
               CalendarWidget(

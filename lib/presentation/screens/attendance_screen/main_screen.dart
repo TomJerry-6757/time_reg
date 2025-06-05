@@ -26,7 +26,6 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 32), //
             CustomCalendar(), const SizedBox(height: 20), //
             ...data.map((item) => _item(item)), //
             const SizedBox(height: 20),

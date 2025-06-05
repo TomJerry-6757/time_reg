@@ -100,85 +100,90 @@ class _CreateRequestScreenState extends State<CreateRequestScreen> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       title: "Хүсэлт",
-      body: Padding(
-        padding: const EdgeInsets.only(top: 32.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GestureDetector(
-              key: _menuKey,
-              onTap: () => _showCustomDropdown(context),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                decoration: BoxDecoration(color: Colors.white, border: Border.all(color: AppColors.lightBackgroundGray, width: 2), borderRadius: BorderRadius.circular(15)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ValueListenableBuilder<String>(
-                      valueListenable: selectedProject,
-                      builder: (context, value, _) {
-                        return CustomText(text: value, fontSize: 14, fontWeight: FontWeight.w500, color: value == 'Хүсэлтийн төрөл' ? AppColors.darkGray : Colors.black);
-                      },
-                    ),
-                    const Icon(Icons.keyboard_arrow_down),
-                  ],
-                ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GestureDetector(
+            key: _menuKey,
+            onTap: () => _showCustomDropdown(context),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+              decoration: BoxDecoration(color: Colors.white, border: Border.all(color: AppColors.lightBackgroundGray, width: 2), borderRadius: BorderRadius.circular(15)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ValueListenableBuilder<String>(
+                    valueListenable: selectedProject,
+                    builder: (context, value, _) {
+                      return CustomText(text: value, fontSize: 14, fontWeight: FontWeight.w500, color: value == 'Хүсэлтийн төрөл' ? AppColors.darkGray : Colors.black);
+                    },
+                  ),
+                  const Icon(Icons.keyboard_arrow_down),
+                ],
               ),
             ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () => _selectDate(context, startDateNotifier),
-                  child: Container(
-                    decoration: BoxDecoration(border: Border.all(width: 2, color: AppColors.lightBackgroundGray), borderRadius: BorderRadius.circular(12)),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15),
-                      child: ValueListenableBuilder<DateTime>(valueListenable: startDateNotifier, builder: (_, date, __) => CustomText(text: "${date.year}, ${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}", fontSize: 14)),
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () => _selectDate(context, startDateNotifier),
+                child: Container(
+                  decoration: BoxDecoration(border: Border.all(width: 2, color: AppColors.lightBackgroundGray), borderRadius: BorderRadius.circular(12)),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15),
+                    child: ValueListenableBuilder<DateTime>(valueListenable: startDateNotifier, builder: (_, date, __) => CustomText(text: "${date.year}, ${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}", fontSize: 14)),
+                  ),
+                ),
+              ),
+              CustomText(text: "to"),
+              GestureDetector(
+                onTap: () => _selectDate(context, endDateNotifier),
+                child: Container(
+                  decoration: BoxDecoration(border: Border.all(width: 2, color: AppColors.lightBackgroundGray), borderRadius: BorderRadius.circular(12)),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15),
+                    child: ValueListenableBuilder<DateTime>(valueListenable: endDateNotifier, builder: (_, date, __) => CustomText(text: "${date.year}, ${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}", fontSize: 14)),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 10),
+          ValueListenableBuilder<String>(
+            valueListenable: selectedProject,
+            builder: (context, value, _) {
+              if (value != "Чөлөө") return const SizedBox(); //
+
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () => _selectTime(context, startTimeNotifier),
+                    child: Container(
+                      decoration: BoxDecoration(border: Border.all(width: 2, color: AppColors.lightBackgroundGray), borderRadius: BorderRadius.circular(12)),
+                      child: Padding(padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 15), child: ValueListenableBuilder<TimeOfDay>(valueListenable: startTimeNotifier, builder: (_, time, __) => CustomText(text: time.format(context), fontSize: 14))),
                     ),
                   ),
-                ),
-
-                GestureDetector(
-                  onTap: () => _selectDate(context, endDateNotifier),
-                  child: Container(
-                    decoration: BoxDecoration(border: Border.all(width: 2, color: AppColors.lightBackgroundGray), borderRadius: BorderRadius.circular(12)),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15),
-                      child: ValueListenableBuilder<DateTime>(valueListenable: endDateNotifier, builder: (_, date, __) => CustomText(text: "${date.year}, ${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}", fontSize: 14)),
+                  CustomText(text: "to"),
+                  GestureDetector(
+                    onTap: () => _selectTime(context, endTimeNotifier),
+                    child: Container(
+                      decoration: BoxDecoration(border: Border.all(width: 2, color: AppColors.lightBackgroundGray), borderRadius: BorderRadius.circular(12)),
+                      child: Padding(padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 15), child: ValueListenableBuilder<TimeOfDay>(valueListenable: endTimeNotifier, builder: (_, time, __) => CustomText(text: time.format(context), fontSize: 14))),
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () => _selectTime(context, startTimeNotifier),
-                  child: Container(
-                    decoration: BoxDecoration(border: Border.all(width: 2, color: AppColors.lightBackgroundGray), borderRadius: BorderRadius.circular(12)),
-                    child: Padding(padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 15), child: ValueListenableBuilder<TimeOfDay>(valueListenable: startTimeNotifier, builder: (_, time, __) => CustomText(text: time.format(context), fontSize: 14))),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () => _selectTime(context, endTimeNotifier),
-                  child: Container(
-                    decoration: BoxDecoration(border: Border.all(width: 2, color: AppColors.lightBackgroundGray), borderRadius: BorderRadius.circular(12)),
-                    child: Padding(padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 15), child: ValueListenableBuilder<TimeOfDay>(valueListenable: endTimeNotifier, builder: (_, time, __) => CustomText(text: time.format(context), fontSize: 14))),
-                  ),
-                ),
-              ],
-            ),
+                ],
+              );
+            },
+          ),
 
-            const SizedBox(height: 10),
-            CustomTextfield(height: 150, labelText: "Тайлбар"),
-            const SizedBox(height: 10),
-            CustomButton(text: "Илгээх"),
-          ],
-        ),
+          const SizedBox(height: 10),
+          CustomTextfield(height: 150, labelText: "Тайлбар"),
+          const SizedBox(height: 10),
+          CustomButton(text: "Илгээх"),
+        ],
       ),
     );
   }

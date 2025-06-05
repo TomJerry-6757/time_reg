@@ -38,7 +38,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomText(text: 'TimeReg', fontSize: 50, fontWeight: FontWeight.w600, color: AppColors.blue),
+                    CustomText(text: 'TimeReg', fontSize: 50, fontWeight: FontWeight.w600, color: AppColors.darkGray),
                     const SizedBox(height: 30),
                     CustomTextfield(labelText: "И-Мэйл", controller: _emailController),
                     const SizedBox(height: 20),
@@ -48,7 +48,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     const SizedBox(height: 30),
                     CustomButton(
                       text: "Нэвтрэх",
-                      backgroundEnabled: true,
+                      backgroundColor: AppColors.darkGray,
                       textColor: AppColors.white,
                       onTap: () {
                         context.read<AuthCubit>().signIn(_emailController.text, _passwordController.text);
@@ -60,9 +60,10 @@ class _SignInScreenState extends State<SignInScreen> {
                     CustomButton(
                       text: "Бүртгүүлэх",
                       borderEnabled: true,
-                      textColor: AppColors.blue,
+                      backgroundColor: AppColors.white,
+                      textColor: AppColors.darkGray,
                       onTap: () {
-                        Navigator.of(context).pushNamed('/registerScreen');
+                        Navigator.of(context).pushNamed('/signUpScreen');
                       },
                     ),
                   ],

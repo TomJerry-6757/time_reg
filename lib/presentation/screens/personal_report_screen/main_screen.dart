@@ -47,63 +47,61 @@ class _PersonalReportScreenState extends State<PersonalReportScreen> {
     return CustomScaffold(
       title: "Тайлан",
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 32),
-          child: Column(
-            children: [
-              CalendarWidget(
-                onDateSelected: (date) {
-                  print('Selected date: $date');
-                },
-              ),
-              const SizedBox(height: 32),
-              ...List.generate(notes.length, (index) {
-                final note = notes[index];
-                final isSelected = selectedIndex == index;
-                final isVisible = _animatedFlags.length > index && _animatedFlags[index];
+        child: Column(
+          children: [
+            CalendarWidget(
+              onDateSelected: (date) {
+                print('Selected date: $date');
+              },
+            ),
+            const SizedBox(height: 32),
+            ...List.generate(notes.length, (index) {
+              final note = notes[index];
+              final isSelected = selectedIndex == index;
+              final isVisible = _animatedFlags.length > index && _animatedFlags[index];
 
-                return AnimatedOpacity(
-                  duration: const Duration(milliseconds: 500),
-                  opacity: isVisible ? 1.0 : 0.0,
-                  curve: Curves.easeOut,
-                  child: Transform.translate(
-                    offset: isVisible ? const Offset(0, 0) : const Offset(0, 20),
-                    child: Column(
-                      children: [
-                        _note(index: index, title: note['title']!, content: note['content']!, isSelected: isSelected, date: note['date']!),
-                        AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 200),
-                          transitionBuilder: (child, animation) => SizeTransition(sizeFactor: animation, axisAlignment: -1, child: child),
-                          child:
-                              isSelected
-                                  ? Padding(
-                                    key: ValueKey(index),
-                                    padding: const EdgeInsets.only(top: 10, bottom: 20),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: CustomButton(
-                                            text: "Засах",
-                                            onTap: () {
-                                              Navigator.pushNamed(context, '/writeReportScreen');
-                                            },
-                                            backgroundEnabled: true,
-                                          ),
+              return AnimatedOpacity(
+                duration: const Duration(milliseconds: 500),
+                opacity: isVisible ? 1.0 : 0.0,
+                curve: Curves.easeOut,
+                child: Transform.translate(
+                  offset: isVisible ? const Offset(0, 0) : const Offset(0, 20),
+                  child: Column(
+                    children: [
+                      _note(index: index, title: note['title']!, content: note['content']!, isSelected: isSelected, date: note['date']!),
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 200),
+                        transitionBuilder: (child, animation) => SizeTransition(sizeFactor: animation, axisAlignment: -1, child: child),
+                        child:
+                            isSelected
+                                ? Padding(
+                                  key: ValueKey(index),
+                                  padding: const EdgeInsets.only(top: 10, bottom: 20),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: CustomButton(
+                                          textColor: AppColors.white,
+                                          text: "Засах",
+                                          onTap: () {
+                                            Navigator.pushNamed(context, '/writeReportScreen');
+                                          },
+                                          backgroundColor: AppColors.darkGray,
                                         ),
-                                        SizedBox(width: 10),
-                                        Expanded(child: CustomButton(text: "Илгээх", onTap: () {}, backgroundEnabled: true)),
-                                      ],
-                                    ),
-                                  )
-                                  : const SizedBox.shrink(),
-                        ),
-                      ],
-                    ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Expanded(child: CustomButton(text: "Илгээх", textColor: AppColors.white, onTap: () {}, backgroundColor: AppColors.darkGray)),
+                                    ],
+                                  ),
+                                )
+                                : const SizedBox.shrink(),
+                      ),
+                    ],
                   ),
-                );
-              }),
-            ],
-          ),
+                ),
+              );
+            }),
+          ],
         ),
       ),
       floatingActionButton: CustomFloatingButton(

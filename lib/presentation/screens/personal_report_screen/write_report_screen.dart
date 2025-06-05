@@ -42,37 +42,34 @@ class _WriteReportScreenState extends State<WriteReportScreen> {
 
     return CustomScaffold(
       title: "Тайлан",
-      body: Padding(
-        padding: const EdgeInsets.only(top: 32.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GestureDetector(
-              key: _menuKey,
-              onTap: () => _showCustomDropdown(context),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                decoration: BoxDecoration(color: Colors.white, border: Border.all(color: AppColors.lightBackgroundGray, width: 2), borderRadius: BorderRadius.circular(15)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ValueListenableBuilder<String>(
-                      valueListenable: selectedProject,
-                      builder: (context, value, _) {
-                        return CustomText(text: value, fontSize: 14, fontWeight: FontWeight.w500, color: value == 'Төслийн нэр' ? AppColors.darkGray : Colors.black);
-                      },
-                    ),
-                    const Icon(Icons.keyboard_arrow_down),
-                  ],
-                ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GestureDetector(
+            key: _menuKey,
+            onTap: () => _showCustomDropdown(context),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+              decoration: BoxDecoration(color: Colors.white, border: Border.all(color: AppColors.lightBackgroundGray, width: 2), borderRadius: BorderRadius.circular(15)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ValueListenableBuilder<String>(
+                    valueListenable: selectedProject,
+                    builder: (context, value, _) {
+                      return CustomText(text: value, fontSize: 14, fontWeight: FontWeight.w500, color: value == 'Төслийн нэр' ? AppColors.darkGray : Colors.black);
+                    },
+                  ),
+                  const Icon(Icons.keyboard_arrow_down),
+                ],
               ),
             ),
-            const SizedBox(height: 10),
-            CustomTextfield(height: 150, labelText: "Тайлан"),
-            const SizedBox(height: 10),
-            CustomButton(text: "Хадгалах"),
-          ],
-        ),
+          ),
+          const SizedBox(height: 10),
+          CustomTextfield(height: 150, labelText: "Тайлан"),
+          const SizedBox(height: 10),
+          CustomButton(text: "Хадгалах"),
+        ],
       ),
     );
   }

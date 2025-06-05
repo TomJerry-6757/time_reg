@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:time_reg/bloc/auth/auth_cubit.dart';
 import 'package:time_reg/firebase_options.dart';
-import 'package:time_reg/presentation/screens/auth/signIn_screen.dart';
+import 'package:time_reg/presentation/screens/auth/initial_screen.dart';
 import 'package:time_reg/router/router.dart';
 
 void main() async {
@@ -19,6 +19,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Time Reg', debugShowCheckedModeBanner: false, onGenerateRoute: _appRouter.onGenerateRoute, theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)), home: SignInScreen());
+    return MaterialApp(title: 'Time Reg', debugShowCheckedModeBanner: false, onGenerateRoute: _appRouter.onGenerateRoute, theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)), home: InitialScreen());
   }
 }

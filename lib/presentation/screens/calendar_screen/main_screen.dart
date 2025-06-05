@@ -14,7 +14,7 @@ class CalendarScreen extends StatefulWidget {
 class _CalendarScreenState extends State<CalendarScreen> {
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(title: "Календар", body: SingleChildScrollView(child: Column(children: [Padding(padding: const EdgeInsets.only(top: 32.0), child: CustomCalendar()), SizedBox(height: 20), _item()])));
+    return CustomScaffold(title: "Календар", body: SingleChildScrollView(child: Column(children: [CustomCalendar(), SizedBox(height: 20), _item()])));
   }
 
   _item() {

@@ -65,39 +65,36 @@ class _RequestScreenState extends State<RequestScreen> {
     return CustomScaffold(
       title: "Хүсэлт илгээх",
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 32),
-          child: ValueListenableBuilder<String>(
-            valueListenable: selectedButton,
-            builder: (context, value, _) {
-              final displayedList =
-                  value == "Чөлөө"
-                      ? leaveRequests
-                      : value == "Амралт"
-                      ? vacationRequests
-                      : remoteRequests;
+        child: ValueListenableBuilder<String>(
+          valueListenable: selectedButton,
+          builder: (context, value, _) {
+            final displayedList =
+                value == "Чөлөө"
+                    ? leaveRequests
+                    : value == "Амралт"
+                    ? vacationRequests
+                    : remoteRequests;
 
-              if (_animatedFlags.length != displayedList.length) {
-                _animatedFlags = List.generate(displayedList.length, (_) => false);
-                _runStaggeredAnimation();
-              }
+            if (_animatedFlags.length != displayedList.length) {
+              _animatedFlags = List.generate(displayedList.length, (_) => false);
+              _runStaggeredAnimation();
+            }
 
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [_buildButton("Чөлөө", value), _buildButton("Амралт", value), _buildButton("Remote", value)]),
-                  const SizedBox(height: 32),
-                  CustomText(text: "Илгээсэн хүсэлтүүд", fontSize: 14, fontWeight: FontWeight.w600),
-                  const SizedBox(height: 12),
-                  ...displayedList.asMap().entries.map((entry) {
-                    final index = entry.key;
-                    final item = entry.value;
-                    return _animatedListItem(item, index);
-                  }).toList(),
-                ],
-              );
-            },
-          ),
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [_buildButton("Чөлөө", value), _buildButton("Амралт", value), _buildButton("Remote", value)]),
+                const SizedBox(height: 32),
+                CustomText(text: "Илгээсэн хүсэлтүүд", fontSize: 14, fontWeight: FontWeight.w600),
+                const SizedBox(height: 12),
+                ...displayedList.asMap().entries.map((entry) {
+                  final index = entry.key;
+                  final item = entry.value;
+                  return _animatedListItem(item, index);
+                }).toList(),
+              ],
+            );
+          },
         ),
       ),
       floatingActionButton: CustomFloatingButton(
