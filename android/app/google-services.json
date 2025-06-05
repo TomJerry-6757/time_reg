@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "348559691653",
+    "project_id": "time-reg-fb0a8",
+    "storage_bucket": "time-reg-fb0a8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348559691653:android:f9cda2bb29e33b0446feec",
+        "android_client_info": {
+          "package_name": "com.example.time_reg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAotoYzm8rKyWYhe5gSxwsyj8m654WJAbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
