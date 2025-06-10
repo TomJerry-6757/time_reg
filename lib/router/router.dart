@@ -8,6 +8,8 @@ import 'package:time_reg/presentation/screens/menu_screen/main_screen.dart';
 import 'package:time_reg/presentation/screens/notifcation_screen/main_screen.dart';
 import 'package:time_reg/presentation/screens/personal_report_screen/main_screen.dart';
 import 'package:time_reg/presentation/screens/personal_report_screen/write_report_screen.dart';
+import 'package:time_reg/presentation/screens/received_requests_screen/main_screen.dart';
+import 'package:time_reg/presentation/screens/received_requests_screen/request_detail_screen.dart';
 import 'package:time_reg/presentation/screens/request_screen/create_request_screen.dart';
 import 'package:time_reg/presentation/screens/request_screen/main_screen.dart';
 
@@ -37,7 +39,9 @@ class AppRouter {
       case '/signUpScreen':
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
       case '/receivedRequestScreen':
-        return MaterialPageRoute(builder: (_) => const SignUpScreen());
+        return MaterialPageRoute(builder: (_) => const ReceivedRequestsScreen());
+      case '/requestDetailScreen':
+        return MaterialPageRoute(builder: (_) => const RequestDetailScreen());
       default:
         return MaterialPageRoute(builder: (_) => const InitialScreen());
     }

@@ -43,7 +43,7 @@ class _MenuScreenState extends State<MenuScreen> {
           const SizedBox(height: 10),
           GestureDetector(
             onTap: () {
-              print("da");
+              Navigator.pushNamed(context, '/receivedRequestScreen');
             },
             child: const CustomText(text: "Танд ирсэн хүсэлтүүд", fontWeight: FontWeight.w500),
           ),
