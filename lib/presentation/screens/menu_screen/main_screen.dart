@@ -30,7 +30,7 @@ class _MenuScreenState extends State<MenuScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(padding: EdgeInsets.only(top: 20.0), child: CustomText(text: "Menu", fontSize: 20, fontWeight: FontWeight.w700)),
+          CustomText(text: "Menu", fontSize: 20, fontWeight: FontWeight.w700),
           const SizedBox(height: 20),
           GestureDetector(
             onTap: () {
@@ -40,6 +40,13 @@ class _MenuScreenState extends State<MenuScreen> {
           ),
           const SizedBox(height: 10),
           const CustomText(text: "Ирцийн мэдээлэл", fontWeight: FontWeight.w500),
+          const SizedBox(height: 10),
+          GestureDetector(
+            onTap: () {
+              print("da");
+            },
+            child: const CustomText(text: "Танд ирсэн хүсэлтүүд", fontWeight: FontWeight.w500),
+          ),
           const SizedBox(height: 50),
           GestureDetector(onTap: _signOut, child: const CustomText(text: "Гарах", fontWeight: FontWeight.w500, color: AppColors.red)),
         ],

@@ -36,6 +36,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SignInScreen());
       case '/signUpScreen':
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
+      case '/receivedRequestScreen':
+        return MaterialPageRoute(builder: (_) => const SignUpScreen());
       default:
         return MaterialPageRoute(builder: (_) => const InitialScreen());
     }
