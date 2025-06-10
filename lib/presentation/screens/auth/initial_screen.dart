@@ -31,7 +31,7 @@ class _InitialScreenState extends State<InitialScreen> {
             backgroundColor: AppColors.darkGray,
             textColor: AppColors.white,
             onTap: () {
-              Navigator.pushNamed(context, '/signInScreen');
+              Navigator.pushNamed(context, '/homeScreen');
             },
           ),
           SizedBox(height: 10),
